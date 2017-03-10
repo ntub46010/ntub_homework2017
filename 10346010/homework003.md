@@ -1,0 +1,2 @@
+1.Ruby是一種程式語言。Rails是用Ruby寫成的網站開發框架，可被用來組合成網站。
+2.Controller會監聽使用者的請求，請Model提供資料、請View提供畫面。Controller將兩者整合成一個有資料的畫面。
