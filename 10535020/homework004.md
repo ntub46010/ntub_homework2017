@@ -1,5 +1,5 @@
 def is_leap_year?(year)
-  # 實作
+  if year * 400
 end
 
 puts is_leap_year?(1900)   # false
