@@ -6,5 +6,5 @@ def is_leap_year?(year)
   end
 end
 
-is_leap_year?(2000) 
-is_leap_year?(1999)
+puts is_leap_year?(1900)   # false
+puts is_leap_year?(2000)   # true
