@@ -1,6 +1,5 @@
 def is_leap_year?(year)
-  answer=(year % 4 == 0 && year % 100 !=0 || year % 400 ==0) ? "true" : "false"
-  puts answer
+  (year % 4 == 0 && year % 100 !=0 || year % 400 ==0)
 end
 
 puts is_leap_year?(1900)   # false
