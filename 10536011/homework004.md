@@ -1,5 +1,5 @@
 def is_leap_year?(year)
-  answer=(year % 4 == 0 && year % 100 !=0 || year % 400 ==0) ? "潤年" : "不是潤年"
+  answer=(year % 4 == 0 && year % 100 !=0 || year % 400 ==0) ? "true" : "false"
   puts answer
 end
 
