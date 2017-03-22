@@ -5,4 +5,4 @@ end
 
 puts is_leap_year?(1900)
 puts is_leap_year?(2000)
-聊天室對話結束
+
