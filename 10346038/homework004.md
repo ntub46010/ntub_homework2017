@@ -2,9 +2,9 @@ def is_leap_year?(year)
 
   if
     year % 400 == 0 || (year % 4 == 0 and year % 100 != 0)
-    return "閏年"
+    return "ture"
   else
-    return "平年"
+    return "false"
   end
   
 end
