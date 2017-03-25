@@ -22,7 +22,7 @@ class Customer
         this_amount += 2 #基本amount為2
         this_amount += (element.days_rented - 2) * 1.5 if element.days_rented > 2 #租超過2天，每日追加1.5
       when Movie::NEW_RELEASE
-        this_amount += element.days_rented * 3 #amount為租借天數*3
+        this_amount += element.days_rented * 3 #amount為租借天數x3
       when Movie::CHILDRENS
         this_amount += 1.5 #基本amount為1.5
         this_amount += (element.days_rented - 3) * 1.5 if element.days_rented > 3 #租超過3天，每日追加1.5
