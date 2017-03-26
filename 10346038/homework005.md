@@ -79,10 +79,17 @@ end
 
 ####
 
+#此程式為計算租片點數，和記錄eddie這個使用者的租片紀錄
+#將Customer實體化與執行，並給client這個物件
 client = Customer.new('eddie')
 
+#執行Movie類別，並將參數丟入
 movie1 = Movie.new('ruby', Movie::NEW_RELEASE)
+
+#執行Rental類別，並將attr_reader::title 與參數丟入
 rental1 = Rental.new(movie1, 3)
+
+#執行Customer裡的add_rental 方法
 client.add_rental rental1
 
 movie2 = Movie.new('php', Movie::REGULAR)
@@ -90,3 +97,5 @@ rental2 = Rental.new(movie2, 7)
 client.add_rental rental2
 
 puts client.statement
+
+#每個Class具有獨立的程式邏輯，達到模組化的效果，Customer類別是作為計算點數與儲存紀錄，Movie是將電影名稱丟入變數和定義代碼，Rental是建立電影名稱和租借時間
