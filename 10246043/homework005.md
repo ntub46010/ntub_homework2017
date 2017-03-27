@@ -1,4 +1,4 @@
-class Customer
+class Customer      #這支程式主要是記錄顧客租電影的明細,第1行到70是在宣告方法跟類別,70行後建立顧客寫入租借事情
   attr_reader :name
 
   def initialize(name) #設定初始化名稱
@@ -18,8 +18,8 @@ class Customer
    @rentals.each do |element|   #@rental底下每一行都執行 , 設定初始執amount=0,進入case判斷式 判斷element.movie,price.code 
       this_amount = 0
       case element.movie.price_code
-      when Movie::REGULAR     #如果element.movie,price.code是regulaar 執行下面程式  
-        this_amount += 2
+      when Movie::REGULAR     #如果element.movie,price.code是regulaar 執行下面程式   
+        this_amount += 2
         this_amount += (element.days_rented - 2) * 1.5 if element.days_rented > 2
       when Movie::NEW_RELEASE  #如果element.movie,price.code是new_release 執行下面程式 
         this_amount += element.days_rented * 3
