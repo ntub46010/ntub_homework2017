@@ -38,8 +38,8 @@ class Customer #定義Customer類別
       total_amount += this_amount
     end
 
-    result += "Amount owed is #{total_amount}\n"
-    result += "You earned #{frequent_renter_points} frequent renter points"
+    result += "Amount owed is #{total_amount}\n" #輸出result
+    result += "You earned #{frequent_renter_points} frequent renter points" #輸出result
     result
   end
 end
@@ -72,11 +72,11 @@ end
 
 client = Customer.new('eddie')#Client產生新的Customer類別並傳入eddie(name)值
 movie1 = Movie.new('ruby', Movie::NEW_RELEASE))#movie1產生新的Movie類別並傳入ruby(title), Movie::NEW_RELEASE(price_code)值
-rental1 = Rental.new(movie1, 3)#rental1產生新的Rental類別並傳入ruby(title), Movie::NEW_RELEASE(price_code)值
-client.add_rental rental1 #rental 繼承 rental1
+rental1 = Rental.new(movie1, 3)#rental1產生新的Rental類別並傳入movie1(movie), 3(days_rented)值
+client.add_rental rental1 #rental 繼承 arg
 
-movie2 = Movie.new('php', Movie::REGULAR)
-rental2 = Rental.new(movie2, 7)
-client.add_rental rental2 #rental 繼承 rental1
+movie2 = Movie.new('php', Movie::REGULAR)#movie2產生新的Movie類別並傳入php(title),  Movie::REGULAR(price_code)值
+rental2 = Rental.new(movie2, 7)#rental1產生新的Rental類別並傳入movie2(movie), 7(days_rented)值
+client.add_rental rental2 #renta2 繼承 arg
 
 puts client.statement #輸出client.statement 
