@@ -1,3 +1,5 @@
+#影片出租程式，可以將不同客戶的租借天數與紀錄放進不同的陣列，然後分別做計算，算出該客戶租借明細與獲得的點數，並做格式化輸出。
+
 class Customer #負責運算客戶租借明細
   attr_reader :name
 
@@ -20,12 +22,12 @@ class Customer #負責運算客戶租借明細
       case element.movie.price_code #判斷租借影片的類別
       when Movie::REGULAR
         this_amount += 2  #2天以內金額2元
-        this_amount += (element.days_rented - 2) * 1.5 if element.days_rented > 2 #如果租超過2天就會有折扣
+        this_amount += (element.days_rented - 2) * 1.5 if element.days_rented > 2 #如果租超過2天就會先減掉2天再乘1.5的金額
       when Movie::NEW_RELEASE
         this_amount += element.days_rented * 3
       when Movie::CHILDRENS
         this_amount += 1.5  #3天以內金額1.5元
-        this_amount += (element.days_rented - 3) * 1.5 if element.days_rented > 3 #如果租超過3天就會有折扣
+        this_amount += (element.days_rented - 3) * 1.5 if element.days_rented > 3 #如果租超過3天就會先減掉3天再乘1.5的金額
       end
 
       frequent_renter_points += 1 #會員點數加1點
