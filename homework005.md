@@ -95,7 +95,7 @@ movie1 = Movie.new('ruby', Movie::NEW_RELEASE)
 #3.把Movie類別實體化
 
 rental1 = Rental.new(movie1, 3)
-#5.把Rental類別實體化 到第66行
+#5.把Rental類別實體化 
 client.add_rental rental1
 #7. 呼叫add_rental發法 
 
