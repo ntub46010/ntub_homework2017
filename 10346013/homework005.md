@@ -86,3 +86,6 @@ rental2 = Rental.new(movie2, 7)
 client.add_rental rental2
 
 puts client.statement
+
+#這個程式是在計算租借點數和紀錄租借紀錄，透過new給予客戶姓名、片名等資料，再從Movie::??判斷。若是Movie::REGULAR，租金=2元，天數如果>2天，則把多的天數*1.5元；如果是Movie::NEW_RELEASE，租金=天數*3；如果是Movie::CHILDRENS，租金=1.5，天數如果>3天，則把多的天數*1.5元。
+#輸出eddie租的片種以及每部片的租金、總金額和總點數
