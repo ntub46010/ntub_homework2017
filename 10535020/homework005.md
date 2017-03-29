@@ -80,3 +80,5 @@ rental2 = Rental.new(movie2, 7)#rental1產生新的Rental類別並傳入movie2(m
 client.add_rental rental2 #renta2 繼承 arg
 
 puts client.statement #輸出client.statement 
+
+#整個程式的用途及運作方式：用途是計算租片的價格及天數，運作方式首先先
