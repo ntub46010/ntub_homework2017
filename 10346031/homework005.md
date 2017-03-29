@@ -1,12 +1,12 @@
 class Customer
-  attr_reader :name ##讀取姓名
+  attr_reader :name ##可存取姓名
   def initialize(name) ##初始化姓名
     @name    = name
-    @rentals = []
+    @rentals = []  ##指定rentals為空集合 (顧客租借紀錄)
   end
 
   def add_rental(arg)
-    @rentals << arg  ##將租借事件附加到集合
+    @rentals << arg  ##將租借事件新增至rentals (顧客租借紀錄)
   end
 
   def statement
@@ -77,6 +77,6 @@ client.add_rental rental1  ##將該事件寫入顧客紀錄中
 
 movie2 = Movie.new('php', Movie::REGULAR)  ##eddie客戶租借一部一般片  名為php
 rental2 = Rental.new(movie2, 7)  ##eddie租借php影片 天數為7天
-client.add_rental rental2  ##將該事件寫入顧客紀錄中
+client.add_rental rental2  ##將該事件寫入顧客租借紀錄中
 
 puts client.statement  ##puts客戶租借紀錄
