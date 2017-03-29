@@ -1,9 +1,9 @@
 def years(year)
      year 
     if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0 ) ## ||前滿足條件1  之後滿足條件2 條件3為憑年的條件不列在此
-        puts true
+        return true
       else
-        puts false
+        return false
     end
 end
 
