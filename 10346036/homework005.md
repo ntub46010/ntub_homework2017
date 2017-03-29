@@ -1,3 +1,9 @@
+#此程式可以將客戶所租的影片紀錄，計算總共的價錢以及可以獲得的點數。
+#如果影片是REGULAR，價錢就是兩元，租期超過兩天會有打折。
+#如果影片是NEW_RELEASE，價錢就是租期天數乘三塊錢。
+#如果影片是CHILDRENS，價錢就是一點五元，租期超過三天會有打折。
+#每租一片，點數就加一點，如果影片是NEW_RELEASE且租期天數大於一，就可再額外增加一點
+#最後將這些紀錄做輸出。
 class Customer
   attr_reader :name									                  #可讀取name
 
@@ -85,4 +91,4 @@ puts client.statement									                      #印出statement方法所回
                                                   					#        ruby    9 
                                                    					#        php     9.5 
                                                   					#Amount owed is 18.5          
-                                                   					#You earned 3 frequent renter points
+                                                   					#You earned 3 frequent renter points
