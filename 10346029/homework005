@@ -1,3 +1,11 @@
+#程式說明
+#Customer Class是用來計算租借影片的價格及租借的點數
+#當影片為一般(REGULAR)類，則基本租金為2元，但當天數>2天，則租金為天數減2天*1.5倍。
+#當影片為新片(NEW_RELEASE)類，則租金為天數*3倍。
+#當影片為孩童(CHILDRENS)類，則基本租金為1.5元，但當天數>3天，則租金為天數減3天*1.5倍。
+#每租一部片多一點而且每增加一天點數也會增加一點
+
+
 class Customer       #定義 Customer 類別                
   attr_reader :name  #定義 name 並讓它能被讀取
   
@@ -19,7 +27,7 @@ class Customer       #定義 Customer 類別
       case element.movie.price_code   #當element 的值符合任一 when 後的條件則執行該區程式  
       when Movie::REGULAR  #當element 為 Movie::REGULAR 則進入此區塊
         this_amount += 2   
-        this_amount += (element.days_rented - 2) * 1.5 if element.days_rented > 2  #假如  element.days_rented > 1 則執行 element.days_rented - 2) * 1.5，並將它加上 this_amount 的值後，再重新指派給  this_amount 
+        this_amount += (element.days_rented - 2) * 1.5 if element.days_rented > 2  #假如  element.days_rented > 2 則執行 element.days_rented - 2) * 1.5，並將它加上 this_amount 的值後，再重新指派給  this_amount 
       when Movie::NEW_RELEASE  #當element 為 Movie::NEW_RELEASE 則進入此區塊
         this_amount += element.days_rented * 3  #執行  element.days_rented * 3 ，並將它加上 this_amount 再重新指派給  this_amount 
       when Movie::CHILDRENS   #當element 為 Movie::CHILDRENS 則進入此區塊
@@ -79,4 +87,11 @@ movie2 = Movie.new('php', Movie::REGULAR)  #建立一個名為 rental2 類型�
 rental2 = Rental.new(movie2, 7)        #建立一個名為 rental2 類型為 Rental 的物件，並將參數  movie2 與 7  傳入
 client.add_rental rental2              # 執行 Customer 裡 add_rental 的方法，參數為 rental2
 
-puts client.statement  #印出  client.statement 
+puts client.statement  #印出  client.statement (租借人、電影名稱、總金額、點數總額)
+
+#結果
+#Rental Record for eddie	
+#   ruby	9	
+#   php	9.5
+#Amount owed is 18.5
+#You earned 3 frequent renter points
