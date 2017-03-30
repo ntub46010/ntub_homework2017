@@ -1,6 +1,18 @@
 # 作業005
 我的註解沒有很多，基本觀念就沒有特別註解，覺得有必要的部分才註解
 ```ruby
+
+#這個程式是在計算客戶的租金以及點數
+
+#租金部分
+#紀錄客戶租了什麼電影,並判斷該電影是一般、新上映或是兒童電影
+#如果是租一般電影,租金為兩元,如果租期超過兩天,則之後的租金以1.5倍計算
+#如果是租新上映的電影,租金為租期的三倍
+#如果是兒童電影,租金為1.5元,如果租期超過三天,則之後的租金以1.5倍計算
+
+#點數部分
+#每租一片電影便有一點,若是租新上映的電影可以多得一點
+
 #客戶類別
 class Customer
   attr_reader :name #可以讀取name
@@ -22,20 +34,7 @@ class Customer
     frequent_renter_points = 0
     result = "Rental Record for #{@name}\n"  #插入Customer類別的實體變數name的值
     
-    #把租金做處理
-    #條件如下
-    #先將this_amount預設為0
-    #以租金類別下的電影類別裡的price_code的值拿來判斷
-    
-    #(請問老師一般在業界會解釋以下這些嗎？)
-    #若與電影類別下的REGULAR常數相等(0),則將this_amount先設為2,並判斷租金類別下的days_rented的值是否大於2,
-    #若是則days_rented先減2再乘上1.5,最後將this_amount加上結果的值
-    
-    #若與電影類別下的NEW_RELEASE常數相等(1),則將days_rented*3,最後將this_amount加上結果的值
-    
-    #若與電影類別下的CHILDRENS常數相等(2),則將this_amount先設為1.5,並判斷租金類別下的days_rented的值是否大於3,
-    #若是則days_rented先減2再乘上1.5,最後將this_amount加上結果的值
-    
+    #處理租金
     @rentals.each do |element|
       this_amount = 0
       case element.movie.price_code
@@ -48,10 +47,7 @@ class Customer
         this_amount += 1.5
         this_amount += (element.days_rented - 3) * 1.5 if element.days_rented > 3
       end
-      #先將frequent_renter_points加1
-      #如果租金類別下的電影類別裡的price_code與電影類別裡的常數NEW_RELEASE相等
-      #並且租金類別下的days_rented大於1
-      #則將frequent_renter_points再加1
+
       frequent_renter_points += 1
       if element.movie.price_code == Movie::NEW_RELEASE && element.days_rented > 1
         frequent_renter_points += 1
