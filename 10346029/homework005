@@ -1,0 +1,97 @@
+#程式說明
+#Customer Class是用來計算租借影片的價格及租借的點數
+#當影片為一般(REGULAR)類，則基本租金為2元，但當天數>2天，則租金為天數減2天*1.5倍。
+#當影片為新片(NEW_RELEASE)類，則租金為天數*3倍。
+#當影片為孩童(CHILDRENS)類，則基本租金為1.5元，但當天數>3天，則租金為天數減3天*1.5倍。
+#每租一部片多一點而且每增加一天點數也會增加一點
+
+
+class Customer       #定義 Customer 類別                
+  attr_reader :name  #定義 name 並讓它能被讀取
+  
+  def initialize(name)  # 當 Customer class被建立後，此方法會進行初始，將區域變數 name 傳給實體變數 name，以及宣告 rentals 為一個陣列
+    @name    = name
+    @rentals = []
+  end
+
+  def add_rental(arg) #定義一個 add_rental 的方法，參數為 arg
+    @rentals << arg   #將 arg 丟給 @rental
+  end
+
+  def statement      #定義一個 statement 的方法但它並無參數
+    total_amount = 0
+    frequent_renter_points = 0
+    result = "Rental Record for #{@name}\n"  #將 name 傳入此字串並指派給 result
+    @rentals.each do |element|   #rentals 陣列做迴圈，並將陣列的值傳給element
+      this_amount = 0
+      case element.movie.price_code   #當element 的值符合任一 when 後的條件則執行該區程式  
+      when Movie::REGULAR  #當element 為 Movie::REGULAR 則進入此區塊
+        this_amount += 2   
+        this_amount += (element.days_rented - 2) * 1.5 if element.days_rented > 2  #假如  element.days_rented > 2 則執行 element.days_rented - 2) * 1.5，並將它加上 this_amount 的值後，再重新指派給  this_amount 
+      when Movie::NEW_RELEASE  #當element 為 Movie::NEW_RELEASE 則進入此區塊
+        this_amount += element.days_rented * 3  #執行  element.days_rented * 3 ，並將它加上 this_amount 再重新指派給  this_amount 
+      when Movie::CHILDRENS   #當element 為 Movie::CHILDRENS 則進入此區塊
+        this_amount += 1.5
+        this_amount += (element.days_rented - 3) * 1.5 if element.days_rented > 3  #假如  element.days_rented > 3 則執行 (element.days_rented - 3) * 1.5，並將它加上 this_amount 的值後，再重新指派給  this_amount 
+      end
+
+      frequent_renter_points += 1
+      if element.movie.price_code == Movie::NEW_RELEASE && element.days_rented > 1 #假如  element.movie.price_code 跟 Movie::NEW_RELEASE 相同，並且element.days_rented > 1 則執行 frequent_renter_points += 1
+        frequent_renter_points += 1
+      end
+
+      result += "\t" + element.movie.title + "\t" + this_amount.to_s + "\n"   #空格 加上element.movie.title 空格 加上this_amount.to_s 換行
+      total_amount += this_amount   #total_amount = total_amount+this_amount
+    end
+
+    result += "Amount owed is #{total_amount}\n"  #將 total_amount 傳入此字串並指派給 result
+    result += "You earned #{frequent_renter_points} frequent renter points"  #將 frequent_renter_points 傳入此字串並指派給 result
+    result
+  end
+end
+
+####
+
+class Movie        #定義 Movie 類別  
+  REGULAR     = 0
+  NEW_RELEASE = 1
+  CHILDRENS   = 2
+
+  attr_reader :title  #定義 title 並讓它能被讀取
+  attr_accessor :price_code  #定義 price_code 並讓它能被讀取及設定
+  
+  def initialize(title, price_code)  # 當 Movie class被建立後，此方法會進行初始
+    @title, @price_code = title, price_code
+  end
+end
+
+####
+
+class Rental   #定義 Rental 類別 
+  attr_reader :movie, :days_rented #定義 days_rented 及 movie 並讓它能被讀取
+
+  def initialize(movie, days_rented) # 當 Rental class被建立後，此方法會進行初始
+    @movie, @days_rented = movie, days_rented
+  end
+end
+
+####
+
+client = Customer.new('eddie')   #建立一個名為 client 類型為 Customer 的物件，並將參數 eddie 傳入
+
+movie1 = Movie.new('ruby', Movie::NEW_RELEASE)  #建立一個名為 movie1 類型為 Movie 的物件，並將參數 ruby 與 Movie::NEW_RELEASE 傳入
+rental1 = Rental.new(movie1, 3) #建立一個名為 rental1 類型為 Rental 的物件，並將參數  movie1 與 3 傳入
+client.add_rental rental1        # 執行 Customer 裡 add_rental 的方法，參數為 rental1
+
+movie2 = Movie.new('php', Movie::REGULAR)  #建立一個名為 rental2 類型為 Rental 的物件，並將參數  php 與 Movie::REGULAR  傳入
+rental2 = Rental.new(movie2, 7)        #建立一個名為 rental2 類型為 Rental 的物件，並將參數  movie2 與 7  傳入
+client.add_rental rental2              # 執行 Customer 裡 add_rental 的方法，參數為 rental2
+
+puts client.statement  #印出  client.statement (租借人、電影名稱、總金額、點數總額)
+
+#結果
+#Rental Record for eddie	
+#   ruby	9	
+#   php	9.5
+#Amount owed is 18.5
+#You earned 3 frequent renter points
