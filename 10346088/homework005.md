@@ -73,10 +73,9 @@ end
 *  如果租借 price_code 為  ```NEW_RELEASE``` ，而且租借天數超過 1 天的話， frequent_renter_points 點數再加 1
 *  將 tab(空格) 、 電影的 title、tab(空格) 、單支影片的租借費用、換行 等字串加入 result 字串中 => '    ruby    9'
 *  將本片租借費用 this_amount 加入總租借費用 total_amount 中
-
-6. 將 "Amount owed is "、總租借費用 total_amount、換行 等字串加入 result 字串中 => 'Amount owed is 18.5'
-7. 將 "You earned "、 frequent_renter_points 點數、" frequent renter points" 等字串加入 result 字串中 => 'You earned 3 frequent renter points'
-8. 傳回字串 result
+*  將 "Amount owed is "、總租借費用 total_amount、換行 等字串加入 result 字串中 => 'Amount owed is 18.5'
+*  將 "You earned "、 frequent_renter_points 點數、" frequent renter points" 等字串加入 result 字串中 => 'You earned 3 frequent renter points'
+*  傳回字串 result
 
 ```ruby
 class Movie
@@ -132,15 +131,52 @@ puts client.statement
 ### 程式部分說明：
 
 1. 產生類別 ```Customer``` 的一個實體 ```client``` ，實體變數 ```@name``` 值為 eddie
+*  有一位顧客名為 eddie
+
 2. 產生類別 ```Movie``` 的一個實體 ```movie1``` ，實體變數 ```@title``` 值為 ruby，以及 ```@price_code``` 為 常數 ```NEW_RELEASE``` 值為1
     產生類別 ```Rental``` 的一個實體 ```rental1``` ，實體變數 ```@movie``` 值為 movie1，以及 ```@days_rented``` 值為 3
     呼叫實體 ```client``` 的方法 ```add_rental``` ，將實體 ```rental1``` 為參數傳至 ```client``` 的實體變數陣列 ```@rentals``` 中
+*  租一部新發行的電影 ruby
+*  租該部電影，租 3 天
+*  將租 ruby 3 天的資訊加入租用紀錄中
 
 3. 產生類別 ```Movie``` 的一個實體 ```movie2``` ，實體變數 ```@title``` 值為 php，以及 ```@price_code``` 為 常數 ```REGULAR``` 值為0
         產生類別 ```Rental``` 的一個實體 ```rental2``` ，實體變數 ```@movie``` 值為 movie2，以及 ```@days_rented``` 值為 7
         呼叫實體 ```client``` 的方法 ```add_rental``` ，將實體 ```rental2``` 為參數傳至 ```client``` 的實體變數陣列 ```@rentals``` 中
+*  租一部一般的電影 php
+*  租該部電影，租 7 天
+*  將租 php 7 天的資訊加入租用紀錄中
 
 4. 將實體 ```client``` 的方法 ```statement``` 執行結果印出來
+*  變數 total_amount、frequent_renter_points 的初值設為0
+
+#####  result 的初值設為字串 'Rental Record for eddie'
+
+*  針對每一部電影的相關資訊處理：
+    第1部 新發行電影 ruby 租 3 天，this_amount = 3 * 3 = 9，租金為 9
+    有一次租借交易 frequent_renter_points 點數加 1，frequent_renter_points = 1
+    因為 ruby 是新片且租借天數超過 1 天， frequent_renter_points = 1 + 1 = 2
+
+#####  result 字串 接上 '        ruby    9' 字串
+
+    total_amount = total_amount + this_amount = 0 + 9 = 9
+
+    第2部 一般的電影 php 租 7 天，this_amount = 2 + (7 - 2) * 1.5 = 9.5，租金 9.5
+    有一次租借交易 frequent_renter_points 點數加 1，frequent_renter_points = 2 + 1 = 3
+
+#####  result 字串 接上 '        php     9.5' 字串
+
+    total_amount = total_amount + this_amount = 9 + 9.5 = 18.5
+
+*  將 "Amount owed is "、總租借費用 total_amount、換行 等字串加入 result 字串中
+
+#####  result 字串 接上 'Amount owed is 18.5' 字串
+
+*  將 "You earned "、 frequent_renter_points 點數、" frequent renter points" 等字串加入 result 字串中
+
+#####  result 字串 接上 'You earned 3 frequent renter points' 字串
+
+*  傳回字串 result  
 
 ### 程式執行結果
 ```
