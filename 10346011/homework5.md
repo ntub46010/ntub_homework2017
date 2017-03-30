@@ -11,9 +11,9 @@ class Customer
   end
 
   def statement
-    total_amount = 0 #預設租片金額=0
+    total_amount = 0   #預設租片金額=0
     frequent_renter_points = 0  #預設租片累積點數=0
-    result = "Rental Record for #{@name}\n" #字串result="Rental Record for 客戶姓名
+    result = "Rental Record for #{@name}\n"  #字串result="Rental Record for 客戶姓名
 
     @rentals.each do |element|  #計算租金
       this_amount = 0
