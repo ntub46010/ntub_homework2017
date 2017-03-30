@@ -1,36 +1,33 @@
 class Customer #定義Customer類別
   attr_reader :name #讀取name
-  def initialize(name) #定義initialize方法
-    @name    = name #name存入@name變數當中
-    @rentals = [] #@rentals為空陣列
+  def initialize(name) #定義initialize方法，將name存入@name的變數中，並設定空陣列
+    @name    = name
+    @rentals = [] 
   end
 
-  def add_rental(arg) #定義add_rental方法
-    @rentals << arg #@rentals繼承arg
+  def add_rental(arg) #定義add_rental方法，使@rentals 繼承 arg
+    @rentals << arg 
   end
 
-  def statement 
+  def statement 定義 statement 計算租片價格和租片點數
     total_amount = 0
     frequent_renter_points = 0
     result = "Rental Record for #{@name}\n" 
     @rentals.each do |element| 
       this_amount = 0
-      case element.movie.price_code #選擇element.movie.price_code 
-      when Movie::REGULAR #如果Movie是REGULAR則this_amount+2
+      case element.movie.price_code 
+      when Movie::REGULAR 
         this_amount += 2
         this_amount += (element.days_rented - 2) * 1.5 if element.days_rented > 2 
-        #如果element.days_rented(租借天數) > 2則this_amount等於(element.days_rented - 2) * 1.5
-      when Movie::NEW_RELEASE #如果Movie是NEW_RELEASE 則 this_amount 為element.days_rented * 3
+      when Movie::NEW_RELEASE 
         this_amount += element.days_rented * 3
-      when Movie::CHILDRENS #如果Movie是CHILDRENS則this_amount+1.5
+      when Movie::CHILDRENS 
         this_amount += 1.5
-        this_amount += (element.days_rented - 3) * 1.5 if element.days_rented > 3
-         #如果element.days_rented(租借天數) > 3則this_amount等於(element.days_rented - 3) * 1.5
+        this_amount += (element.days_rented - 3) * 1.5 if element.days_rented > 2
       end
 
       frequent_renter_points += 1
       if element.movie.price_code == Movie::NEW_RELEASE && element.days_rented > 1
-      #如果element.movie.price_code等於NEW_RELEASE和符合element.days_rented > 1條件
         frequent_renter_points += 1
       end
 
@@ -38,32 +35,32 @@ class Customer #定義Customer類別
       total_amount += this_amount
     end
 
-    result += "Amount owed is #{total_amount}\n" #輸出result
-    result += "You earned #{frequent_renter_points} frequent renter points" #輸出result
+    result += "Amount owed is #{total_amount}\n" 
+    result += "You earned #{frequent_renter_points} frequent renter points"
     result
   end
 end
 
 ####
 
-class Movie #定義Movie類別
+class Movie #定義Movie類別，讀取title、price_code ，寫入price_code ，放入@title, @price_code實體變數中
   REGULAR     =  0
   NEW_RELEASE = 1
   CHILDRENS   = 2
 
-  attr_reader :title #讀取title
-  attr_accessor :price_code #讀並寫price_code
+  attr_reader :title 
+  attr_accessor :price_code
   
-  def initialize(title, price_code) #定義initialize，傳入兩個值之後，放入@title, @price_code實體變數中
+  def initialize(title, price_code) 
     @title, @price_code = title, price_code
   end
 end
 
 ####
 
-class Rental #定義Rental類別
-  attr_reader :movie, :days_rented #讀取movie、days_rented
-  def initialize(movie, days_rented)#定義initialize，傳入兩個值之後，放入 @movie, @days_rented 實體變數中
+class Rental #定義Rental類別，讀取movie、days_rented放入實體變數中
+  attr_reader :movie, :days_rented 
+  def initialize(movie, days_rented)
     @movie, @days_rented = movie, days_rented
   end
 end
