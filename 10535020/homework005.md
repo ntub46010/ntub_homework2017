@@ -84,10 +84,10 @@ puts client.statement #輸出client.statement
 #整個程式的用途及運作方式：用途是計算租片的價格及天數
 運作方式
 1.client開始->Customer New ，之後就會進入Customer類別->add_rental方法->statement 方法->輸出result。
-2.movie1-> Movie類別
-3.rental1-> Rental類別
+2.movie1->處理 Movie類別
+3.rental1->運作 Rental類別
 4.rental 繼承 arg
-5.movie2產生新的Movie類別
-6.rental2-> Rental類別
+5.movie2->進入Movie類別
+6.rental2-> 執行Rental類別
 7.renta2 繼承 arg
 8.輸出client.statement 
