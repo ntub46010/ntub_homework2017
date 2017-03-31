@@ -1,0 +1,2 @@
+Model：資料，View：畫面，Controller：流程。
+Controller有好幾個Action，會透過Route找到對應的Action，然後Action會去找Model要資料，Model會把資料交給Controller的Action，View負責顯示Controller傳過來的資料。
