@@ -1,0 +1,3 @@
+在rails裡是用MVC模式去設計的
+首先當輸入網址時，會先去route找路徑對照表，裡面會告訴你去controller執行對應的哪一個方法也就是action，然後接著會請model幫忙跟資料庫取得資料
+接著model會將取得的這些資料在交還給controller的action，但這些資料還會再經由view去呈現，讓資料更容易閱讀
