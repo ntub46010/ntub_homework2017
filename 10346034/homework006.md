@@ -1,0 +1,4 @@
+一開始當使用者提出Request到Routing這關
+經由 Route.rb 的查表方式到某個 Action Controller
+然後傳送到Model 轉換成Database看得懂的語言 到Database抓資料再回傳
+回傳給Controller後再由Controller給到Views呈現結果給使用者看
