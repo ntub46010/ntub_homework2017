@@ -1,0 +1,4 @@
+當使用者連線進入網站時，首先會參照Route來對應到網站的MVC位置  
+當參照Route到Controller後，Controller會有複數的Action來對應使用者的行為，並與Model以及View互動  
+例如使用者如果要查找一個資料，就會透過Controller的某個Action（如果有定義的話）來與Model聯繫  
+Model在從資料庫中抓取資料並回傳給Controller，Controller在將回傳的資料整理包裝後傳給View，讓View顯示畫面給使用者  
