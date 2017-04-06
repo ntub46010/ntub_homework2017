@@ -1,6 +1,6 @@
 ※MVC說明
 1.使用者在瀏覽器發出HTTP request請求給伺服器的Rails，request分為4種，分別為讀取 
-  (GET)、新增(POST)、更新(PUT/PATCH)、刪除(DELETE)。
+  (Read)、新增(Create)、更新(Update)、刪除(Destroy)。	
 2.路由(Routing)收到瀏覽器端的請求(request)，並根據收到的使用者輸入的網址及參數，找
  到對應的路徑，傳送給Controller(控制器)。
 3.Controller(控制器)收到請求後，會根據此請求，找到對應的方法(Action)，並判斷是否需
