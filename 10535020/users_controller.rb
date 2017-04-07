@@ -1,21 +1,20 @@
-
+   
   def new
-    @user = User.new
+    @user = User.new   建立User表單
   end
 
   # GET /users/1/edit
-  def edit
+  def edit 編輯
   end
 
   # POST /users
   # POST /users.json
-  def create
-    @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+  def create 
+    @user = User.new(user_params) 產生新的一筆資料
+    respond_to do |format| 
+      if @user.save 如果儲存一筆資料
+        format.html { redirect_to @user, notice: 'User was successfully created.' } 資料連接到@user,notice顯示User was successfully created.
+        format.json { render :show, status: :created, location: @user } 
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -41,14 +40,14 @@
   # DELETE /users/1.json
   
 
-  private
+  private 
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
+    def set_user 
       @user = User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
+    def user_params 
       params.require(:user).permit(:name, :email, :password)
     end
 end
