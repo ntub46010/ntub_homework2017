@@ -37,7 +37,9 @@
     end
   end
 
+  private
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params #規定傳輸的資料只限於name、email、password，其它則會無視
       params.require(:user).permit(:name, :email, :password)
     end
+  end
