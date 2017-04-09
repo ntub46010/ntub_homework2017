@@ -24,7 +24,9 @@ class UsersController < ApplicationController
   def edit
   end
 
-  #定義create方法，新增User的欄位參數，如果存檔成功，到User列表頁面，並出現訊息'User was successfully created.'和顯示欄位與新增的內容，，若存檔失敗會重新到新增畫面
+  #定義create方法，新增User的欄位參數
+  #如果存檔成功，到User列表頁面，並出現訊息'User was successfully created.'和顯示欄位與新增的內容
+  #若存檔失敗會重新到新增畫面
   # POST /users
   # POST /users.json
   def create
@@ -41,7 +43,9 @@ class UsersController < ApplicationController
     end
   end
 
-  #定義update方法，更新User的欄位參數，如果更新欄位成功，到User列表頁面，並出現訊息'User was successfully updated.'和顯示欄位與更新後的欄位內容，，若存檔失敗會重新到編輯畫面
+  #定義update方法，更新User的欄位參數
+  #如果更新欄位成功，到User列表頁面，並出現訊息'User was successfully updated.'和顯示欄位與更新後的欄位內容
+  #若更新失敗會重新到編輯畫面
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
