@@ -74,7 +74,7 @@ class UsersController < ApplicationController
 end
 
 
-#new方法，使用 User這個 Model 做出一個新的實體，並存為 @candidate 實體變數供 View 使用。
+#new方法，使用 User這個 Model 做出一個新的實體，並存為 @User 實體變數供 View 使用。
 #edit方法，紀錄要新增、編輯的該筆資料ID，調出該筆資料。
 #create方法，當在new.html.erb按下送出後，將會將資料給create方法，將資料收集在params裡，經user_params允許過後新增使用者。
 #update方法，更新使用者資料。
