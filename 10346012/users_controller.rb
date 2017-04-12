@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
-  # 這裡的index是要取得 view 中的index.html.erb 的資料
+  # 這裡的index是要取得 view 中的index.html.erb 的資料 @user 實體變數
   def index
     @users = User.all
   end
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/new
-  # 這裡new的動作是取得新增的user資料的值
+  # 這裡new的動作是取得新增的 user資料的值
   def new
     @user = User.new
   end
@@ -34,10 +34,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params) # 去確認傳進資料庫的值
 
     respond_to do |format|
-      if @user.save
+      if @user.save # 成功新增資料會 顯示User was successfully created 並 render 給資料庫存在的值
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
-      else
+      else # 失敗會新增頁面 會render給資料庫失敗訊息
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -49,12 +49,12 @@ class UsersController < ApplicationController
   # update 資料庫更新user的判斷
   def update 
     respond_to do |format|
-      if @user.update(user_params) # 檢查更新的user值
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+      if @user.update(user_params) # 檢查更新的user值 跳回 user 畫面
+        format.html { redirect_to @user, notice: 'User was successfully updated.' } # 成更會更新並顯示成功訊息 User was successfully updated.
+        format.json { render :show, status: :ok, location: @user } # render 給資料庫 
       else 
         format.html { render :edit } # update 資料庫失敗的回傳
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity } # 失敗一樣render給資料庫訊息 
       end
     end
   end
@@ -77,7 +77,7 @@ class UsersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params # 這裡是判斷的方法，只准許name email password 修改的資料允許傳送
+    def user_params # 這裡是判斷的方法，只准許name email password 修改的資料允許傳送 其他不准
       params.require(:user).permit(:name, :email, :password)
     end
 end
