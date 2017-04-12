@@ -5,7 +5,7 @@ def new
     @user = User.new
 end
 
-#編輯資料，過程中不需要特別做其他事
+#編輯某筆User資料，採預設的程式流程(來自父類別)
 def edit
 end
 
