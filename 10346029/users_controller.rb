@@ -1,4 +1,4 @@
-```
+
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -87,4 +87,4 @@ class UsersController < ApplicationController
      # 限制前端欄位傳到後端，此處只允許 name , email , password。
     
 end
-```
+
