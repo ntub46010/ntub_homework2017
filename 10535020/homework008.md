@@ -13,7 +13,7 @@
 2.你認為為什麼 Rails 的資料驗證是寫在 Model，而不是單純使用 JavaScript 或是在 Controller 裡檢查?
 可以將人所寫的程式 Model 轉成資料庫看得懂的資料庫查詢語言（SQL），並且透過資料庫查詢語言，Model 可以從資料庫那邊取得你想要的資料。
 3.什麼是 N + 1 問題，在 Rails 通常怎麼解決?
-存取資料庫是一種相對很慢的I/O的操作：每一條SQL query都得耗上時間、執行回傳的結果也會被轉成ActiveRecord物件全部放進記憶體，N+1 queries是資料庫效能頭號殺手，問題是假設User有10筆，這程式會產生出11筆Queries，一筆是查User，另外10筆是一筆一筆去查Car，嚴重拖慢效能。
+存取資料庫是一種相對很慢的I/O的操作：每一條SQL query都得耗上時間、執行回傳的結果也會被轉成ActiveRecord物件全部放進記憶體，N+1 queries是資料庫效能頭號殺手，假設User有10筆，這程式會產生出11筆Queries，一筆是查User，另外10筆是一筆一筆去查Car，嚴重拖慢效能，這就是N + 1 問題。
 SELECT * FROM `users` LIMIT 10 OFFSET 0
 SELECT * FROM `cars` WHERE (`cars`.`user_id` = 1)
 SELECT * FROM `cars` WHERE (`cars`.`user_id` = 2)
