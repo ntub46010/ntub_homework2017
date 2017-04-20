@@ -4,7 +4,7 @@
 <br>
 <br>
 ### 2.你認為為什麼 Rails 的資料驗證是寫在 Model，而不是單純使用 JavaScript 或是在 Controller 裡檢查?<br>
-不使用 JavaScript 是避免網頁原始碼被查看，遭到有心人士研究後隨意對資料庫做操作。<br>
+不使用 JavaScript 是避免網頁原始碼被查看，遭到有心人士研究後試圖跳過驗證，隨意對資料庫做操作。<br>
 考慮MVC架構，不使用 Controller 是為了不越俎代庖。而Model是負責在資料庫存取資料，故應由它做驗證，有問題再讓 Controller 處理回報。
 <br>
 <br>
