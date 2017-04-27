@@ -1,0 +1,2 @@
+1.Resources跟resources的差異就是，單數的不帶有id和index，通常使用單數的的情況在於這個設計只讓使用者檢視、更新與刪除自己的資料。
+2.Member與collection不同的點在於 member 方式產生的路徑，會帶有 :id 在裡面，這個 :id 會傳到 Controller 裡變成 params 這個變數的一部份。
