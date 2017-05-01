@@ -1,0 +1,1 @@
+Rails的Scaffold指令可以直接幫你建立好相關的Model、Controller、View，就不用自己一個一個的分別建立
