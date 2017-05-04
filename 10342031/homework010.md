@@ -1,7 +1,7 @@
 # 作業 010
 
 請用「自己的話」並舉例說明 Rails 的 Scaffold 指令幫你完成了哪些事?
-Create(新增), Read(讀取), Update(更新) 跟 Delete(刪除)
+
 Scaffold可以快速完成CRUD這幾項動作
 
 以上課教學的候選人資料表來舉例
@@ -54,19 +54,15 @@ end
   <tbody>
   <% @candidates.each do |candidate| %>
   <tr>
-    <td><%= link_to "vote!", vote_candidate_path(candidate), class: "btn btn-xs btn-danger", data: { confirm: "Vote this one?!" }, method: "post" %></td>
     <td><%= link_to display_name(candidate), candidate %></td>
     <td><%= candidate.logs.count %></td>
     <td><%= candidate.age %></td>
     <td><%= candidate.politics %></td>
-    <td>
-     <%= link_to "edit", edit_candidate_path(candidate), class: "btn btn-success btn-xs"  %>
-     <%= link_to "delete", candidate, method: "delete", data: { confirm: 'delete?!'}, class: "btn btn-danger btn-xs"  %>
-    </td>
   </tr>
     <% end %>
   </tbody>
 </table>
+
 ```
 第六步 新增候選人資料
 修改`new.html.erb`
@@ -74,10 +70,72 @@ end
 <h1>New Candidate</h1>
 <%= render 'form', candidate: @candidate %>
 ```
+`views/candidates`新增一個`_form.html.erb`
+```ruby
+<%= form_for candidate do |f| %>
+
+name :<%= f.text_field :name %><br />
+age :<%= f.text_field :age %><br />
+party :<%= f.text_field :party %><br />
+politics :<%= f.text_area :politics %><br />
+
+<%= f.submit %>
+
+<% end %>
+```
+會和之後的編輯刪除有著同樣的程式碼，因此在這邊直接另外開了檔案製作
 到`app/controllers/candidates_controller.rb`新增new方法
 ```ruby
 def new
     @candidate = Candidate.new
   end
  ```
-
+根據Rails的慣例，Route自動會去找`candidates#create`處理
+到`app/controllers/candidates_controller.rb`，完成create方法
+```ruby
+def create
+    @candidate = Candidate.new(candidate_params)
+    if @candidate.save
+    redirect_to candidates_path, notice: "success!"
+    else
+      render 'new'
+      #redirect_to new_candidate_path
+    end
+ ```
+第七步 編輯、刪除、投票功能，到`index.html.erb`新增這三條程式碼
+```ruby
+ <%= link_to "edit", edit_candidate_path(candidate), class: "btn btn-success btn-xs"  %>
+ <%= link_to "delete", candidate, method: "delete", data: { confirm: 'delete?!'}, class: "btn btn-danger btn-xs"  %>
+ 
+ <%= link_to "vote!", vote_candidate_path(candidate), class: "btn btn-xs btn-danger", data: { confirm: "Vote this one?!" }, method: "post" %>
+ ```
+ 和新增一樣，到`candidates_controller.rb`
+ ```ruby
+ before_action :find_candidate, only: [:show, :edit, :update, :destroy, :vote]
+ def edit
+    end
+ ```
+ 再到`edit.html.erb`
+```ruby
+<h1>
+  Edit Candidate
+</h1>
+<%= render 'form', candidate: @candidate %>
+```
+到`app/controllers/candidates_controller.rb`，完成update、destroy方法
+```ruby
+    before_action :find_candidate, only: [:show, :edit, :update, :destroy, :vote]
+    def update
+    if @candidate.update(candidate_params)
+    redirect_to candidates_path, notice: "updated!!"
+    else
+      render 'edit'
+      #redirect_to new_candidate_path
+    end
+    end
+    def destroy
+      @candidate.destroy
+      #flash[:notice] = "deleted!"
+      redirect_to candidates_path, notice: "deleted!"
+    end
+ ```
