@@ -1,0 +1,2 @@
+Scaffold 指令可以產生出很多個檔案，可以輕鬆的製作原本需要手動的工作，擁有最基本的新增、修改、刪除</br>
+例如 $ rails generate scaffold User name:string email:string tel:string 可以造出一個能夠新增、修改、刪除name、email、tel的簡易基本資料
