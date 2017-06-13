@@ -1,21 +1,20 @@
 1.請用「自己的話」舉例說明什麼叫做「Duck Typing」。
 Duck Typing是可接受不同型態的物件呼叫它的方法。
-class Bird
-    def say
-        puts "I'm a bird."
-    end
-    def call(bird)
-        bird.say
+
+def noise(dog)
+    dog.make_noise
+end
+
+class Cat
+    def make_noise
+      puts "meow!meow!"
     end
 end
-class Eagle < Bird
-    def say
-        puts "I'm an eagle, inherit of bird."
-    end
-end
-#I'm a bird.
-#I'm an eagle, inherit of bird.
-透過bird.call方法裡的bird.say，傳給Bird、Eagle不同的物件，產生了兩種不同的行為。
+
+cat=Cat.new
+noise(cat)
+
+透過noise(cat)，將參數cat傳給noise()這個方法呼叫cat.make_noise，印出"meow!meow!"。
 
 2.請用「自己的話」舉例說明實體方法(instance method) 跟類別方法(class method) 的差別。
 差別在於方法作用的對象不同，實體方法需要一個實體物件才能呼叫，類別方法可直接用類別呼叫。
