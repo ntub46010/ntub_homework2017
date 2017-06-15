@@ -1,11 +1,21 @@
 
 ### 1. 請用「自己的話」舉例說明什麼叫做「Duck Typing」  
 方法不受限於物件型態僅思考物件應當具有的行為。  
-例如：有一個方法doQuack(嘎嘎叫聲)，假設有一隻鳥的叫聲像嘎嘎聲，就判定為duck，可以做duck的quack方法。
+例如：有一個方法doQuack(鴨子叫)，參數```duck```不具型態，假設有一隻鳥叫聲像鴨子叫，則可以利用```duQuack```方法，做duck的quack方法。
 ```
+ class Duck
+  def quack
+   puts "叫聲嘎嘎叫"
+  end
+ end
+ 
  def doQuack(duck)
    duck.quack
  end
+ 
+ bird = Duck.new
+ doQuack(bird) #印出 叫聲嘎嘎叫
+ 
 ```
 ### 2. 請用「自己的話」舉例說明實體方法(instance method) 跟類別方法(class method) 的差別。  
 類別方法作用在類別上，實體方法作用在實體上。  
