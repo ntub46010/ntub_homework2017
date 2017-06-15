@@ -1,10 +1,17 @@
 1. 請用「自己的話」舉例說明什麼叫做「Duck Typing」
 A：鴨子型別可以接受不同type的物件呼叫它的方法，不用在乎物件的型別。
-def doQuack(duck)
-    duck.quack
+def shippingmanifest(package)
+    package.count
+end
+class Shoes
+ def count   
+ end
 end
 
-duck沒有任何型態宣告，所以不會有任何型態約束，只要傳進來的物件具有quack方法就可以。
+shoes = Shoes.new
+shippingmanifest(shoes)
+
+shippingmanifest(cat)會把shoes傳給shippingmanifest(package)，所以把參數shoes的值傳遞給package，進而呼叫shoes.count
 
 2. 請用「自己的話」舉例說明實體方法(instance method) 跟類別方法(class method) 的差別。
 A：instance method要一個實體物件才能呼叫；class method 可以直接用類別呼叫。
