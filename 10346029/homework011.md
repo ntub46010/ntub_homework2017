@@ -71,8 +71,8 @@ Dog.bark
 ### 在 Ruby 引入模組有兩種方式：include 跟 extend，請舉例並說明這兩個方法的差別？
 
 這兩種方法最大的差異在於程式碼嵌入的時機。<br>
-include：在程式建立實例時才做繼承 <br>
-extend：只繼承方法不繼承實例
+include：在程式建立實例時才繼承Module中的方法 <br>
+extend：是讓Class具有Module的方法
 
 
 ```ruby
