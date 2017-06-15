@@ -80,4 +80,23 @@ Greet.question "Amy"
 
 
 3. 在 Ruby 引入模組有兩種方式：include 跟 extend，請舉例並說明這兩個方法的差別？
+```ruby
+module Base    
+  def greet  
+    puts "Hello!"  
+  end  
+end  
+class Hi  
+  include Base
+end
+class question  
+  extend Base 
+end
+
+Hi.new.base #Hello!
+question.base #Hello!
+```
+`include`讓`Hi`繼承`module`的方法
+
+`extend`讓`question`有`module`的方法，但不會繼承給實體
 
