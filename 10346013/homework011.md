@@ -4,14 +4,15 @@ def shippingmanifest(package)
     package.count
 end
 class Shoes
- def count   
+ def count 
+ #印出東西
  end
 end
 
 shoes = Shoes.new
 shippingmanifest(shoes)
 
-shippingmanifest(cat)會把shoes傳給shippingmanifest(package)，所以把參數shoes的值傳遞給package，進而呼叫shoes.count
+shippingmanifest(shoes)會把shoes傳給shippingmanifest(package)，所以把參數shoes的值傳遞給package，進而呼叫shoes.count
 
 2. 請用「自己的話」舉例說明實體方法(instance method) 跟類別方法(class method) 的差別。
 A：instance method要一個實體物件才能呼叫；class method 可以直接用類別呼叫。
