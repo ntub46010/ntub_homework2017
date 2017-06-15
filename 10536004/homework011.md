@@ -18,15 +18,19 @@ end
    類別方法可直接被類別名稱使用  
    兩者不能交換使用，實體物件無法使用類別方法  
 ```ruby
-class pp
+class P
  def f1 #實體方法
-   ...
+   puts "f1"
  end
   
  def self.f2  #類別方法
-   ...
+   puts "f2"
  end
 end
+
+abc = P.new
+abc.f1 #f1
+P.f2 #f2
 ```
 3. 在 Ruby 引入模組有兩種方式：include 跟 extend，請舉例並說明這兩個方法的差別？  
    include是使用實體方法  
