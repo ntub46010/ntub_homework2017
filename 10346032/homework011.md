@@ -1,6 +1,21 @@
 1.Duck Typing定義 
 當我定義一個duck的類型，那當我其他的物件符合duck的一些條件，那他就可以稱為duck
 
+ex:
+class Duck {
+    quack() { println "I'm a Duck" }
+}
+
+class Frog {
+    quack() { println "I'm a Frog" }
+}
+
+quackers = [ new Duck(), new Frog() ]
+for (q in quackers) {
+    q.quack()
+}
+
+
 2.實體方法(instance method) 跟類別方法(class method) 的差別 
 
 這差別在於instance method需要實體，而class method可以直接呼叫 
