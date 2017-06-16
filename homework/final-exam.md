@@ -29,7 +29,11 @@
 
 ![image](screen.png)
 
-請完成這個畫面(包括新增、修改、刪除)，並請「適當」的使用 git commit。
+
+說明：
+
+1. 請完成這個畫面(包括新增、修改、刪除)，並請「適當」的使用 git commit。
+2. 畫面完成度越接近，分數越高。(建議使用 Bootstrap)
 
 以上，請完成後，推到你的個人 Github 帳號下，並到[這裡](https://github.com/kaochenlong/ntub_homework2017/issues/383)依範例格式填寫。
 
